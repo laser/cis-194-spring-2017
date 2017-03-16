@@ -2,11 +2,11 @@ name:                cis194
 version:             0.1.0.0
 synopsis:            Initial project template from stack, using hspec and quickcheck
 description:         Please see README.md
-homepage:            http://github.com/laser/cis194#readme
+homepage:            http://github.com/laser/cis-194-spring-2017
 license:             MIT
 license-file:        LICENSE
 author:              Erin Swenson-Healey
-maintainer:          eswenson-healey@cj.com
+maintainer:          l@s3r.me
 copyright:           2010 Author Here
 category:            Educational
 build-type:          Simple
@@ -25,15 +25,10 @@ library
                      , Homework.Week05.ExprT
                      , Homework.Week05.Parser
                      , Homework.Week06.Assignment
-                     , Homework.Week07.Assignment
                      , Homework.Week08.Assignment
                      , Homework.Week08.AParser
                      , Homework.Week09.Assignment
                      , Homework.Week09.AParser
-                     , Homework.Week10.Assignment
-                     , Homework.Week11.Assignment
-                     , Homework.Week11.Reference
-                     , Homework.Week11.Types
   build-depends:       base >= 4.7 && < 5
                      , MonadRandom
                      , QuickCheck
@@ -62,4 +57,4 @@ test-suite cis194-test
 
 source-repository head
   type:     git
-  location: https://github.com/laser/cis-194-winter-2016
+  location: https://github.com/laser/cis-194-spring-2017
