@@ -1,4 +1,4 @@
-# CIS194: Winter 2016
+# CIS194: Spring 2017
 
 Click [here](http://coursework-progress.herokuapp.com/) to chart your progress through the course.
 
@@ -6,19 +6,15 @@ Click [here](http://coursework-progress.herokuapp.com/) to chart your progress t
 
 Week | Lecture                                                | Assignment Due          | Due     | Presenter                         |
 ---- | ------------------------------------------------------ | ----------------------- | ------- | --------------------------------- |
-1    | [Introduction to Haskell][1]                           | [cc numbers, hanoi][21] | Jan. 14 |                                   |
-2    | [Algebraic Data Types][2]                              | [log parsing][22]       | Jan. 21 |                                   |
-3    | [Recursion patterns, polymorphism, and the Prelude][3] | [code golf][23]         | Jan. 28 |                                   |
-4    | [Parametric Polymorphism][4]                           | [BST, recursion][24]    | Feb. 4  | Sean Shubin (Type Classes)        |
-5    | [More polymorphism and type classes][5]                | [calculator][25]        | Feb. 11 | Mary Flagstad (Streams)           |
-6    | [Lazy evaluation][6]                                   | [streams][26]           | Feb. 18 | Greg Wiley (Monoids)              |
-7    | [Monoids, I/O][7]                                      | [markets, JSON][27]     | Feb. 25 | Joe Vargas (Functor)              |
-8    | [Functors][8] [Applicative functors (part 1)][9]       | [parsers, part one][28] | Mar. 3  | Hal Arnold (Applicative Functors) |
-9    | [Applicative functors (part 2)][10]                    | [parsers, part two][29] | Mar. 10 | Alexis King (Monads I)            |
-10   | [Monads][11]                                           |                         | N/A     | Alexis King (Monads II)           |                           |
-11   | Monads                                                 | [risk][30]              | Mar. 24 | Erin (Monad Transformers)         |
-12   | Monad Transformers (read [this][12] and [this][13])    | TBD                     | Mar. 31 | ???                               |
-13   | TBD                                                    | TBD                     | Apr. 7  | N/A                               |
+1    | [Introduction to Haskell][1]                           | [cc numbers, hanoi][21] |         |                                   |
+2    | [Algebraic Data Types][2]                              | [log parsing][22]       |         |                                   |
+3    | [Recursion patterns, polymorphism, and the Prelude][3] | [code golf][23]         |         |                                   |
+4    | [Parametric Polymorphism][4]                           | [BST, recursion][24]    |         |                                   |
+5    | [More polymorphism and type classes][5]                | [calculator][25]        |         |                                   |
+6    | [Lazy evaluation][6]                                   | [streams][26]           |         |                                   |
+7    | ???                                                    |                         |         |                                   |
+8    | [Functors][8] [Applicative functors (part 1)][9]       | [parsers, part one][28] |         |                                   |
+9    | [Applicative functors (part 2)][10]                    | [parsers, part two][29] |         |                                   |
 
   [1]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week01L-intro.pdf
   [2]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week02L-ADTs.pdf
@@ -60,8 +56,8 @@ brew install haskell-stack
 ### Clone the Repo (Don't Fork!!)
 
 ```
-15:07 $ git clone git@github.com:laser/cis-194-winter-2016.git
-Cloning into 'cis-194-winter-2016'...
+15:07 $ git clone git@github.com:laser/cis-194-spring-2017.git
+Cloning into 'cis-194-spring-2017'...
 remote: Counting objects: 350, done.
 remote: Compressing objects: 100% (9/9), done.
 remote: Total 350 (delta 13), reused 10 (delta 10), pack-reused 331
@@ -75,18 +71,18 @@ Checking connectivity... done.
 Create a new branch off of `master` whose name is the same as your GitHub username. Then, push the branch to the remote (GitHub) repository. If you don't have permission to push to this repository, let me know and I'll grant them.
 
 ```
-15:07 $ cd cis-194-winter-2016/
-✔ ~/dev/cis-194-winter-2016 [master|✔]
+15:07 $ cd cis-194-spring-2017/
+✔ ~/dev/cis-194-spring-2017 [master|✔]
 
 15:09 $ git checkout -b laser
 Switched to a new branch 'laser'
-✔ ~/dev/cis-194-winter-2016 [laser|✔]
+✔ ~/dev/cis-194-spring-2017 [laser|✔]
 
 15:09 $ git push origin laser
 Total 0 (delta 0), reused 0 (delta 0)
-To git@github.com:laser/cis-194-winter-2016.git
+To git@github.com:laser/cis-194-spring-2017.git
  * [new branch]      laser -> laser
-✔ ~/dev/cis-194-winter-2016 [laser|✔]
+✔ ~/dev/cis-194-spring-2017 [laser|✔]
 ```
 
 ### Initialize Stack
