@@ -43,8 +43,8 @@ Week | Lecture                                                | Assignment Due  
   [28]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week09A-applicative.pdf
   [29]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week10A-applicative-cont.pdf
   [30]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week11A-monads.pdf
-  [31]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/QuickCheckL.pdf
-  [32]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/LensesL.pdf
+  [31]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/QuickCheckA.pdf
+  [32]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/LensesA.pdf
 
 ## Getting Started
 
