@@ -12,9 +12,12 @@ Week | Lecture                                                | Assignment Due  
 4    | [Parametric Polymorphism][4]                           | [BST, recursion][24]    |         |                                   |
 5    | [More polymorphism and type classes][5]                | [calculator][25]        |         |                                   |
 6    | [Lazy evaluation][6]                                   | [streams][26]           |         |                                   |
-7    | ???                                                    |                         |         |                                   |
+7    | [Monoids][7]                                           | [monoids][27]           |         |                                   |
 8    | [Functors][8] [Applicative functors (part 1)][9]       | [parsers, part one][28] |         |                                   |
 9    | [Applicative functors (part 2)][10]                    | [parsers, part two][29] |         |                                   |
+10   | [Property-based Testing w/QuickCheck][12]              | [testing][31]           |         |                                   |
+11   | [Monads][11]                                           | [risk][30]              |         |                                   |
+12   | [Lenses][13]                                           | [lenses][32]            |         |                                   |
 
   [1]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week01L-intro.pdf
   [2]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week02L-ADTs.pdf
@@ -22,13 +25,13 @@ Week | Lecture                                                | Assignment Due  
   [4]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week04L-parametric-polymorphism.pdf
   [5]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week05L-type-classes.pdf
   [6]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week06L-laziness.pdf
-  [7]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week07L-monoids-and-IO.pdf
+  [7]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week07L-monoids.pdf
   [8]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week08L-functors.pdf
   [9]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week09L-applicative.pdf
   [10]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week10L-applicative-cont.pdf
   [11]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/Week11L-monads.pdf
-  [12]: http://book.realworldhaskell.org/read/monad-transformers.html
-  [13]: https://github.com/kqr/gists/blob/master/articles/gentle-introduction-monad-transformers.md
+  [12]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/QuickCheckL.pdf
+  [13]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/lectures/LensesL.pdf
 
   [21]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/Week01A-intro.pdf
   [22]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/Week02A-ADTs.pdf
@@ -36,10 +39,12 @@ Week | Lecture                                                | Assignment Due  
   [24]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/Week04A-parametric-polymorphism.pdf
   [25]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/Week05A-type-classes.pdf
   [26]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/Week06A-laziness.pdf
-  [27]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/Week07A-monoids-and-IO.pdf
+  [27]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/Week07A.pdf
   [28]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/Week09A-applicative.pdf
   [29]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/Week10A-applicative-cont.pdf
   [30]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/Week11A-monads.pdf
+  [31]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/QuickCheckL.pdf
+  [32]: https://github.com/laser/cis-194-winter-2016/blob/master/pdfs/assignments/LensesL.pdf
 
 ## Getting Started
 
