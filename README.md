@@ -17,7 +17,7 @@ Week | Lecture                                                | Assignment Due  
 9    | [Applicative functors (part 2)][10]                    | [parsers, part two][29] |         |                                   |
 10   | [Property-based Testing w/QuickCheck][12]              | [testing][31]           |         |                                   |
 11   | [Monads][11]                                           | [risk][30]              |         |                                   |
-12   | [Lenses][13]                                           | [lenses][32]            |         |                                   |
+12   | [Lenses][13]                                           | lenses                  |         |                                   |
 
   [1]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/lectures/Week01L-intro.pdf
   [2]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/lectures/Week02L-ADTs.pdf
@@ -43,8 +43,7 @@ Week | Lecture                                                | Assignment Due  
   [28]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week09A-applicative.pdf
   [29]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week10A-applicative-cont.pdf
   [30]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week11A-monads.pdf
-  [31]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/QuickCheckA.pdf
-  [32]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/LensesA.pdf
+  [31]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week12A-quickcheck.pdf
 
 ## Getting Started
 
