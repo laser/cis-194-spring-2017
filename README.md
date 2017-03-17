@@ -39,7 +39,7 @@ Week | Lecture                                                | Assignment Due  
   [24]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week04A-parametric-polymorphism.pdf
   [25]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week05A-type-classes.pdf
   [26]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week06A-laziness.pdf
-  [27]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week07A.pdf
+  [27]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week07A-monoids.pdf
   [28]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week09A-applicative.pdf
   [29]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week10A-applicative-cont.pdf
   [30]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week11A-monads.pdf
