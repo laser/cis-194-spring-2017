@@ -14,29 +14,23 @@ spec :: Spec
 spec = do
   describe "toDigits" $ do
     it "should split digits of integer into a list" $ do
-      pending
       toDigits 1234 `shouldBe` [1,2,3,4]
 
     it "should return an empty list for zero" $ do
-      pending
       toDigits 0 `shouldBe` []
 
     it "should return an empty list for negative numbers" $ do
-      pending
       toDigits (-1) `shouldBe` []
 
   describe "toDigitsRev" $ do
     it "should return an empty list for zero" $ do
-      pending
       toDigitsRev 0 `shouldBe` []
 
     it "should return an empty list for negative numbers" $ do
-      pending
       toDigitsRev (-1) `shouldBe` []
       toDigitsRev (-22222) `shouldBe` []
 
     it "should split digits of integer into a list in reverse order" $ do
-      pending
       toDigitsRev 123 `shouldBe` [3,2,1]
       toDigitsRev 431 `shouldBe` [1,3,4]
       toDigitsRev 12 `shouldBe` [2,1]
@@ -44,11 +38,9 @@ spec = do
 
   describe "doubleEveryOther" $ do
     it "should return an empty list given an empty list" $ do
-      pending
       doubleEveryOther [] `shouldBe` []
 
     it "should double every other int in the list, from right to left" $ do
-      pending
       doubleEveryOther [8,7,6,5] `shouldBe`[16,7,12,5]
       doubleEveryOther [1,2,3] `shouldBe` [1,4,3]
 
