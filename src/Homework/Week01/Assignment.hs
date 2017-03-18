@@ -20,12 +20,18 @@ reallyDoubleEveryOther (x:[]) = [x]
 reallyDoubleEveryOther (x:y:xs) = x : y * 2 : reallyDoubleEveryOther xs
 
 -- #3
+sumDigits' :: [Integer] -> Integer
+sumDigits' [] = 0
+sumDigits' (x:[]) = x
+sumDigits' (x:xs) = x + (sumDigits' xs)
+
 sumDigits :: [Integer] -> Integer
-sumDigits = undefined
+sumDigits [] = 0
+sumDigits (x:xs) = (sumDigits' (toDigits x)) + sumDigits xs
 
 -- #4
 validate :: Integer -> Bool
-validate = undefined
+validate n = (sumDigits (doubleEveryOther (toDigits n))) `mod` 10 == 0
 
 -- #5
 type Peg = String

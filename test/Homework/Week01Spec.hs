@@ -46,21 +46,17 @@ spec = do
 
   describe "sumDigits" $ do
     it "should return zero for an empty list" $ do
-      pending
       sumDigits [] `shouldBe` 0
 
     it "should sum all digits in the list" $ do
-      pending
       sumDigits [16,7,12,5] `shouldBe` 22
       sumDigits [18,7,33,5] `shouldBe` 27
 
   describe "validate" $ do
     it "should return True for valid card number" $ do
-      pending
       validate 4012888888881881 `shouldBe` True
 
     it "should return False for invalid card number" $ do
-      pending
       validate 4012888888881882 `shouldBe` False
 
   describe "hanoi" $ do
