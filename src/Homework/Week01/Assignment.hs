@@ -2,7 +2,11 @@ module Homework.Week01.Assignment where
 
 reverseList :: [a] -> [a]
 reverseList [] = []
-reverseList (x:xs) = reverseList(xs) ++ [x]
+reverseList (xs) = reverseList' xs []
+
+reverseList' :: [a] -> [a] -> [a]
+reverseList' [] l = l
+reverseList' (originalHead:originalTail) reversed = reverseList' originalTail (originalHead:reversed)
 
 -- #1a
 toDigits :: Integer -> [Integer]
@@ -11,7 +15,7 @@ toDigits n = reverseList (toDigitsRev n)
 -- #1b
 toDigitsRev :: Integer -> [Integer]
 toDigitsRev n
-  | n < 0 = []
+  | n <= 0 = []
   | otherwise = (n `mod` 10) : toDigitsRev (n `div` 10)
 
 -- #2
