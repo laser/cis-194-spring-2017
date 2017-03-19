@@ -6,7 +6,8 @@ reverseList (xs) = reverseList' xs []
 
 reverseList' :: [a] -> [a] -> [a]
 reverseList' [] l = l
-reverseList' (originalHead:originalTail) reversed = reverseList' originalTail (originalHead:reversed)
+reverseList' (originalHead:originalTail) reversed =
+  reverseList' originalTail (originalHead:reversed)
 
 -- #1a
 toDigits :: Integer -> [Integer]
@@ -20,15 +21,24 @@ toDigitsRev n
 
 -- #2
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther = undefined
+doubleEveryOther xs = doubleEveryOther' (reverseList xs) [] 1
+
+doubleEveryOther' :: [Integer] -> [Integer] -> Integer -> [Integer]
+doubleEveryOther' [] acc _ = acc
+doubleEveryOther' (x:xs) acc mutiplier = 
+  let newMutiplier = (mutiplier `mod` 2) + 1
+  in  doubleEveryOther' xs ((x * mutiplier):acc) newMutiplier
 
 -- #3
 sumDigits :: [Integer] -> Integer
-sumDigits = undefined
+sumDigits [] = 0
+sumDigits (x:xs) 
+  | x < 10 = x + sumDigits xs
+  | otherwise = sumDigits (toDigitsRev x) + sumDigits xs
 
 -- #4
 validate :: Integer -> Bool
-validate = undefined
+validate n = sumDigits (doubleEveryOther (toDigits n)) `mod` 10 == 0
 
 -- #5
 type Peg = String
