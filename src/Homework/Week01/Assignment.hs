@@ -2,23 +2,38 @@ module Homework.Week01.Assignment where
 
 -- #1a
 toDigits :: Integer -> [Integer]
-toDigits = undefined
+toDigits n = reverse (toDigitsRev n)
 
 -- #1b
 toDigitsRev :: Integer -> [Integer]
-toDigitsRev = undefined
+toDigitsRev n
+  | n > 0  = n `mod` 10: toDigitsRev (n `div` 10)
+  | otherwise = [] 
 
 -- #2
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther = undefined
+doubleEveryOther n = reverse(otherFunc(reverse(n)))
+
+otherFunc :: [Integer] -> [Integer]
+otherFunc (x:y:zs) = x :(2* y ) : otherFunc(zs) 
+otherFunc (y:zs) =  y : otherFunc(zs)
+otherFunc (zs) = []
+
 
 -- #3
 sumDigits :: [Integer] -> Integer
-sumDigits = undefined
+sumDigits (y : zs) = otherFunction(toDigits(y)) + sumDigits(zs)
+sumDigits []  = 0
+
+otherFunction :: [Integer] -> Integer
+otherFunction (y:zs) = y + otherFunction(zs)
+otherFunction [] = 0
 
 -- #4
 validate :: Integer -> Bool
-validate = undefined
+validate n 
+  | sumDigits(doubleEveryOther(toDigits(n))) `mod` 10 == 0 = True
+  | otherwise = False
 
 -- #5
 type Peg = String
