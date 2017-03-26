@@ -23,24 +23,17 @@ import Text.Parsec.String (Parser)
 -- #1a
 infoMessage :: Parser LogMessage
 infoMessage = do
-  char 'I'
-  space
-  (ts, msg) <- timeStampedMessage
+  (ts, msg) <- char 'I' >> space *> timeStampedMessage
   return $ LogMessage Info ts msg
 
 warningMessage :: Parser LogMessage
 warningMessage = do
-  char 'W'
-  space
-  (ts, msg) <- timeStampedMessage
+  (ts, msg) <- char 'W' >> space *> timeStampedMessage
   return $ LogMessage Warning ts msg
 
 errorMessage :: Parser LogMessage
 errorMessage = do
-  char 'E'
-  space
-  c <- int
-  space
+  c <- char 'E' >> space *> int <* space
   (ts, msg) <- timeStampedMessage
   return $ LogMessage (Error c) ts msg
 
@@ -97,8 +90,7 @@ allChars = many1 anyChar >>= return
 
 timeStampedMessage :: Parser (TimeStamp, String)
 timeStampedMessage = do
-  ts <- int
-  space
+  ts <- int <* space
   msg <- allChars
   return (ts, dropWhileEnd isSpace msg)
 
