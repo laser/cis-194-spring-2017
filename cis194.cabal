@@ -49,6 +49,7 @@ library
                      , sqlite-simple
                      , transformers
                      , mtl
+                     , parsec
   default-language:    Haskell2010
 
 test-suite cis194-test
