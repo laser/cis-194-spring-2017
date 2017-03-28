@@ -18,7 +18,6 @@ spec = do
       toDigits 1234 `shouldBe` [1,2,3,4]
 
     it "should return an empty list for zero" $ do
-      pending
       toDigits 0 `shouldBe` []
 
     it "should return an empty list for negative numbers" $ do
