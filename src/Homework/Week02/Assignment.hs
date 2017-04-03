@@ -69,12 +69,7 @@ inOrder (Node left logMessage right) = inOrder left ++ [logMessage] ++ inOrder r
 
 -- #5
 whatWentWrong :: [LogMessage] -> [String]
-whatWentWrong [] = []
-whatWentWrong logMessages =
-  let messageTree = build logMessages
-      orderedMessages = inOrder messageTree
-      errors = filter isProblem orderedMessages
-  in map printLogMessage errors
+whatWentWrong = map printLogMessage . filter isProblem . inOrder . build
 
 isProblem :: LogMessage -> Bool
 isProblem (LogMessage (Error error_code) _ _) = error_code > 50
