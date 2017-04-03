@@ -56,12 +56,42 @@ logTime (Unknown _) = -1
 --   | 
 -- #3
 build :: [LogMessage] -> MessageTree
-build = undefined
+build logMessages = build' logMessages Leaf
+
+build' :: [LogMessage] -> MessageTree -> MessageTree
+build' [] messageTree = messageTree
+build' (logMessage:logMessages) messageTree = build' logMessages (insert logMessage messageTree)
 
 -- #4
 inOrder :: MessageTree -> [LogMessage]
-inOrder = undefined
+inOrder Leaf = []
+inOrder (Node left logMessage right) =
+  leftMessages left [] ++ [logMessage] ++ rightMessages right []
+
+leftMessages :: MessageTree -> [LogMessage] -> [LogMessage]
+leftMessages Leaf logMessages = logMessages
+leftMessages (Node left logMessage _) logMessages = leftMessages left (logMessage : logMessages)
+
+rightMessages :: MessageTree -> [LogMessage] -> [LogMessage]
+rightMessages Leaf logMessages = reverse logMessages
+rightMessages (Node _ logMessage right) logMessages = rightMessages right (logMessage : logMessages)
+
+findFirstNode :: MessageTree -> MessageTree
+findFirstNode node@(Node Leaf _ _) = node
+findFirstNode (Node left _ _) = findFirstNode left
 
 -- #5
 whatWentWrong :: [LogMessage] -> [String]
-whatWentWrong = undefined
+whatWentWrong [] = []
+whatWentWrong logMessages =
+  let messageTree = build logMessages
+      orderedMessages = inOrder messageTree
+      errors = filter isProblem orderedMessages
+  in map printLogMessage errors
+
+isProblem :: LogMessage -> Bool
+isProblem (LogMessage (Error error_code) _ _) = error_code > 50
+isProblem _ = False
+
+printLogMessage :: LogMessage -> String
+printLogMessage (LogMessage _ _ message) = message
