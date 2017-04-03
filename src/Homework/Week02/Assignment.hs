@@ -65,20 +65,7 @@ build' (logMessage:logMessages) messageTree = build' logMessages (insert logMess
 -- #4
 inOrder :: MessageTree -> [LogMessage]
 inOrder Leaf = []
-inOrder (Node left logMessage right) =
-  leftMessages left [] ++ [logMessage] ++ rightMessages right []
-
-leftMessages :: MessageTree -> [LogMessage] -> [LogMessage]
-leftMessages Leaf logMessages = logMessages
-leftMessages (Node left logMessage _) logMessages = leftMessages left (logMessage : logMessages)
-
-rightMessages :: MessageTree -> [LogMessage] -> [LogMessage]
-rightMessages Leaf logMessages = reverse logMessages
-rightMessages (Node _ logMessage right) logMessages = rightMessages right (logMessage : logMessages)
-
-findFirstNode :: MessageTree -> MessageTree
-findFirstNode node@(Node Leaf _ _) = node
-findFirstNode (Node left _ _) = findFirstNode left
+inOrder (Node left logMessage right) = inOrder left ++ [logMessage] ++ inOrder right
 
 -- #5
 whatWentWrong :: [LogMessage] -> [String]
