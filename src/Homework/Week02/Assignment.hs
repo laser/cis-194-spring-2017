@@ -52,15 +52,9 @@ logTime :: LogMessage -> Int
 logTime (LogMessage _ time _) = time
 logTime (Unknown _) = -1
 
--- insert messageTree
---   | 
 -- #3
 build :: [LogMessage] -> MessageTree
-build logMessages = build' logMessages Leaf
-
-build' :: [LogMessage] -> MessageTree -> MessageTree
-build' [] messageTree = messageTree
-build' (logMessage:logMessages) messageTree = build' logMessages (insert logMessage messageTree)
+build = foldl (flip insert) Leaf
 
 -- #4
 inOrder :: MessageTree -> [LogMessage]
