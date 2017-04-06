@@ -124,3 +124,4 @@ of who is participating in the course and how far they've progressed.
 * [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
 * [Hoogle](https://www.haskell.org/hoogle/)
 * [Standard library aka Prelude documentation](http://hackage.haskell.org/package/base)
+
