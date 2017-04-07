@@ -30,8 +30,27 @@ localMaxima' (before:x:after:xs) acc
   | otherwise = localMaxima' (x : after : xs) acc
 
 -- #3
-histogram :: [Integer] -> String
-histogram xs = histogram_printer (Data.List.sort xs) []
+histogramNumbers = [0 .. 9]
 
-histogram_printer :: [Integer] -> [String] -> String
-histogram_printer xs graph = undefined
+histogram :: [Integer] -> String
+histogram xs =
+  let counts = histogramCounts xs
+      maxCount = maximum counts
+      numberLine = intercalate "" . map show $ histogramNumbers
+      axisLine = replicate (length histogramNumbers) '='
+      columns = reverse . transpose . map (histogramRow maxCount) $ counts
+  in intercalate "\n" . reverse $ ("" : numberLine : axisLine : columns)
+
+histogramCounts :: [Integer] -> [Int]
+histogramCounts xs =
+  let grouped = group . sort $ xs
+  in histogramCounts' grouped histogramNumbers []
+
+histogramCounts' :: [[Integer]] -> [Integer] -> [Int] -> [Int]
+histogramCounts' _ [] acc = reverse acc
+histogramCounts' (x@(xn:_):xs) (n:ns) acc
+  | xn == n = histogramCounts' xs ns (length x : acc)
+histogramCounts' xs (n:ns) acc = histogramCounts' xs ns (0 : acc)
+
+histogramRow :: Int -> Int -> String
+histogramRow maxCount n = replicate (maxCount - n) ' ' ++ replicate n '*'
