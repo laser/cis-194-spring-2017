@@ -13,9 +13,6 @@ main = hspec spec
 
 spec :: Spec
 spec = do
-  describe "week 5 specs" $
-    it "are commented out below" pending
-{-
   describe "eval" $ do
     it "evaluates Lit expressions as plain integers" $ do
       property $ \x -> eval (Lit x) `shouldBe` x
@@ -39,7 +36,7 @@ spec = do
 
   describe "Expr ExprT" $ do
     it "produces expression ASTs" $ do
-      mul (add (lit 2) (lit 3)) (lit 4) `shouldBe`
+      (mul (add (lit 2) (lit 3)) (lit 4) :: ExprT) `shouldBe`
         Mul (Add (Lit 2) (Lit 3)) (Lit 4)
 
   describe "Expr Integer" $ do
@@ -97,4 +94,3 @@ spec = do
 
     it "evaluates arithmetic expressions to integers mod 7" $ do
       mul (add (lit 2) (lit 3)) (lit 4) `shouldBe` Mod7 6
--}

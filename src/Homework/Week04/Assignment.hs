@@ -26,11 +26,11 @@ import Data.List
 
 -- #1
 ex1 :: a -> b -> b
-ex1 = error "impossible"
+ex1 _ x = x
 
 -- #2
 ex2 :: a -> a -> a
-ex2 x y = x
+ex2 x _ = x
 
 -- #3
 ex3 :: Int -> a -> a
