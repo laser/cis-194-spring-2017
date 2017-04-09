@@ -20,6 +20,9 @@ module Homework.Week04.Assignment (
 ) where
 
 import Homework.Week04.BST
+import Data.List
+import Data.Char
+import Data.Maybe
 
 -- #1
 -- Only one function inhabits the type.
@@ -109,4 +112,4 @@ firstLetters = undefined
 
 -- #17
 asList :: [String] -> String
-asList = undefined
+asList xs = "[" ++ intercalate "," xs ++ "]"
