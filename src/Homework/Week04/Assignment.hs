@@ -108,7 +108,7 @@ dropTrailingWhitespace = undefined
 
 -- #16
 firstLetters :: [String] -> [Char]
-firstLetters = undefined
+firstLetters = map head . filter (not . null)
 
 -- #17
 asList :: [String] -> String
