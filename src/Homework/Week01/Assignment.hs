@@ -6,7 +6,9 @@ i = 78
 -- This is properly tail-recursive, but does it matter with lazy list-construction?
 toDigits' :: Integer -> [Integer] -> [Integer]
 toDigits' 0 acc = acc
-toDigits' i acc = toDigits' (div i 10) (mod i 10 : acc)
+toDigits' i acc
+ | i < 0 = []
+ | otherwise = toDigits' (div i 10) (mod i 10 : acc)
 
 toDigits :: Integer -> [Integer]
 toDigits i = toDigits' i []
@@ -16,14 +18,16 @@ toDigits i = toDigits' i []
 -- on the recursive call, so I think it's actually fine.
 toDigitsRev :: Integer -> [Integer]
 toDigitsRev 0 = []
-toDigitsRev i = mod i 10 : toDigitsRev (div i 10)
+toDigitsRev i
+  | i < 0 = []
+  | otherwise = mod i 10 : toDigitsRev (div i 10)
 
 -- #2
 -- Double every other number starting from LEFT.
 doubleEveryOther' :: [Integer] -> [Integer]
 doubleEveryOther' [] = []
-doubleEveryOther' [n] = [2 * n]
-doubleEveryOther' (m : n : rest) = m : (2 * n) : doubleEveryOther' rest
+doubleEveryOther' [n] = [n]
+doubleEveryOther' (m : n : rest) = m : (2 * n) : (doubleEveryOther' rest)
 
 -- A lot of extra list-traversal here considering that all CC numbers have
 -- sixteen digits.
