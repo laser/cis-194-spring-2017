@@ -99,14 +99,20 @@ insertBST sorter x (Node left y right)
   where comparison = sorter x y
 
 -- #14
+-- listToMaybe returns the fisrt element in a maybe if there is one,
+-- or Nothing if there isn't. fromMaybe takes a default,
+-- so default to a non-capital letter if the string was empty.
 allCaps :: [String] -> Bool
-allCaps = undefined
+allCaps = all (isUpper . fromMaybe 'a' . listToMaybe)
 
 -- #15
+-- This solution comes right from the haskell docs.
 dropTrailingWhitespace :: String -> String
-dropTrailingWhitespace = undefined
+dropTrailingWhitespace = dropWhileEnd isSpace
 
 -- #16
+-- null checks for empty lists, so filter those out, then
+-- safely use head.
 firstLetters :: [String] -> [Char]
 firstLetters = map head . filter (not . null)
 
