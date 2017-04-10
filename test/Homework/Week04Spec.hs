@@ -44,3 +44,5 @@ spec = do
       asList ["alpha", "beta", "gamma"] `shouldBe` "[alpha,beta,gamma]"
       asList [] `shouldBe` "[]"
       asList ["lonely"] `shouldBe` "[lonely]"
+      asList ["up", "", "down"] `shouldBe` "[up,down]"
+
