@@ -20,71 +20,90 @@ module Homework.Week04.Assignment (
 ) where
 
 import Homework.Week04.BST
+import Data.Char
+import Data.List
+import Data.Maybe
 
 -- #1
 ex1 :: a -> b -> b
-ex1 = undefined
+ex1 _ b = b
 
 -- #2
 ex2 :: a -> a -> a
-ex2 = undefined
+ex2 a _ = a
 
 -- #3
 ex3 :: Int -> a -> a
-ex3 = undefined
+ex3 _ a = a
 
 -- #4
 ex4 :: Bool -> a -> a -> a
-ex4 = undefined
+ex4 _ a _ = a
 
 -- #5
 ex5 :: Bool -> Bool
-ex5 = undefined
+ex5 x = not x
 
 -- #6
+-- Cannot deduce domain of the function to call it or otherwise produce a value of that type.
 ex6 :: (a -> a) -> a
-ex6 = undefined
+ex6 = error "impossible"
 
 -- #7
 ex7 :: (a -> a) -> a -> a
-ex7 = undefined
+ex7 f x = (f x)
 
 -- #8
 ex8 :: [a] -> [a]
-ex8 = undefined
+ex8 x = x
 
 -- #9
 ex9 :: (a -> b) -> [a] -> [b]
-ex9 = undefined
+ex9 f l = map f l
 
 -- #10
+-- Cannot produce an a from Nothing
 ex10 :: Maybe a -> a
-ex10 = undefined
+ex10 = error "impossible"
 
 -- #11
 ex11 :: a -> Maybe a
-ex11 = undefined
+ex11 x = Just x
 
 -- #12
 ex12 :: Maybe a -> Maybe a
-ex12 = undefined
+ex12 Nothing = Nothing
+ex12 (Just x) = Just x
 
 -- #13
 insertBST :: (a -> a -> Ordering) -> a -> BST a -> BST a
-insertBST = undefined
+insertBST _ x Leaf = Node Leaf x Leaf
+insertBst comp x (Node left xt right) =
+  case (comp x xt) of
+    LT -> Node (insertBST comp x left) xt right
+    EQ -> Node (insertBST comp x left) xt right
+    GT -> Node left xt (insertBST comp x right)
+
+safeHead :: [a] -> Maybe a
+safeHead [] = Nothing
+safeHead (x:_) = Just x
+
+safeTail :: [a] -> Maybe [a]
+safeTail [] = Nothing
+safeTail (_:xs) = Just xs
 
 -- #14
 allCaps :: [String] -> Bool
-allCaps = undefined
+allCaps words = all (\ word -> (maybe False isUpper (safeHead word))) words
 
 -- #15
 dropTrailingWhitespace :: String -> String
-dropTrailingWhitespace = undefined
+dropTrailingWhitespace s = dropWhileEnd isSpace s
 
 -- #16
 firstLetters :: [String] -> [Char]
-firstLetters = undefined
+firstLetters words = mapMaybe safeHead words
 
 -- #17
 asList :: [String] -> String
-asList = undefined
+asList words = "[" ++ (intercalate "," (filter (isJust . safeHead) words)) ++ "]"
