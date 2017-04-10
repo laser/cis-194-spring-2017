@@ -42,11 +42,13 @@ ex3 _ a = a
 -- #4
 -- Return type is determined by second and third arguments, which must have same type.
 -- First argument must be boolean.
+-- Either the second or third argument could be returned, so there are two such functions.
 ex4 :: Bool -> a -> a -> a
-ex4 _ a _ = a
+ex4 _ x _ = x
 
 -- #5
 -- Takes a boolean and returns one.
+-- There are two possible functions: identity and logical negation.
 ex5 :: Bool -> Bool
 ex5 x = not x
 
