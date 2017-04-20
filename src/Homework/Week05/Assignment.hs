@@ -13,11 +13,16 @@ import Homework.Week05.Parser
 
 -- #1
 eval :: ExprT -> Integer
-eval = undefined
+eval (Lit n) = n
+eval (Add x y) = eval x + eval y
+eval (Mul x y) = eval x * eval y
 
 -- #2
 evalStr :: String -> Maybe Integer
-evalStr = undefined
+evalStr s =
+  case parseExp Lit Add Mul s of 
+    Nothing -> Nothing
+    Just n -> Just (eval n)
 
 -- #3
 -- class Expr a where
