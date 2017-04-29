@@ -107,4 +107,4 @@ firstLetters xs = map fromJust $ filter isJust $ map safeHead xs
 
 -- #17
 asList :: [String] -> String
-asList xs = "[" ++ (intercalate "," xs) ++ "]"
+asList xs = "[" ++ (intercalate "," (filter (\s -> length s > 0) xs)) ++ "]"
