@@ -13,14 +13,21 @@ module Homework.Week06.Assignment (
 
 -- #1a
 fib :: Integer -> Integer
-fib = undefined
+fib 0 = 0
+fib 1 = 1
+fib n = fib (n - 1) + fib (n - 2)
 
 fibs1 :: [Integer]
-fibs1 = undefined
+fibs1 = map fib [0..]
 
 -- #2
 fibs2 :: [Integer]
-fibs2 = undefined
+fibs2 = 0 : 1 : fibs2' 0 1
+
+fibs2' :: Integer -> Integer -> [Integer]
+fibs2' x1 x2 = 
+  let next = x1 + x2
+   in next : fibs2' x2 next
 
 -- #3
 data Stream a = Stream a -- replace this with your own definition; this one is wrong
