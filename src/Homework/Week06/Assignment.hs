@@ -30,23 +30,23 @@ fibs2' x1 x2 =
    in next : fibs2' x2 next
 
 -- #3
-data Stream a = Stream a -- replace this with your own definition; this one is wrong
+data Stream a = Stream a (Stream a)
 
 streamToList :: Stream a -> [a]
-streamToList = undefined
+streamToList (Stream x xs) = x : streamToList xs
 
--- instance Show a => Show (Stream a) where
---   show = ???
+instance Show a => Show (Stream a) where
+  show = show . take 20 . streamToList
 
 -- #4
 streamRepeat :: a -> Stream a
-streamRepeat = undefined
+streamRepeat x = Stream x (streamRepeat x)
 
 streamMap :: (a -> b) -> Stream a -> Stream b
-streamMap = undefined
+streamMap f (Stream x xs) = Stream (f x) (streamMap f xs)
 
 streamFromSeed :: (a -> a) -> a -> Stream a
-streamFromSeed = undefined
+streamFromSeed f s = Stream s (streamFromSeed f (f s))
 
 -- #5
 nats :: Stream Integer
