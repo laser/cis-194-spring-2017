@@ -50,7 +50,27 @@ streamFromSeed f s = Stream s (streamFromSeed f (f s))
 
 -- #5
 nats :: Stream Integer
-nats = undefined
+nats = streamFromSeed (+ 1) 0
 
 ruler :: Stream Integer
-ruler = undefined
+ruler = streamMap largestPowerOfTwo natsFromOne
+-- ruler = 
+--   let odds = streamRepeat 0
+--       evens = streamMap largestPowerOfTwo (streamFromSeed (+ 1) 1)
+--    in interleaveStreams odds evens
+
+largestPowerOfTwo :: Integer -> Integer
+largestPowerOfTwo x
+  | divisible = 1 + largestPowerOfTwo (x `div` 2)
+  | otherwise = 0
+  where divisible = isDivisibleByTwo x
+
+natsFromOne :: Stream Integer
+natsFromOne = streamFromSeed (+ 1) 1
+
+isDivisibleByTwo :: Integer -> Bool
+isDivisibleByTwo x = x `mod` 2 == 0
+
+interleaveStreams :: Stream a -> Stream a -> Stream a
+interleaveStreams (Stream x xs) (Stream y ys) =
+  Stream x (interleaveStreams ys xs)
