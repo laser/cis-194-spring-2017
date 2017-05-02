@@ -1,4 +1,4 @@
-module Buffer where
+module Homework.Week07.Buffer where
 
 -- Type class for data structures that can represent the text buffer
 -- of an editor.

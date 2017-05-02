@@ -1,9 +1,10 @@
 {-# LANGUAGE FlexibleInstances, TypeSynonymInstances #-}
-module StringBuffer where
+
+module Homework.Week07.StringBuffer where
 
 import Data.Monoid
 
-import Buffer
+import Homework.Week07.Buffer
 
 instance Buffer String where
   toString     = id

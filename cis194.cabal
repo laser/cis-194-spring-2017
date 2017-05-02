@@ -25,10 +25,13 @@ library
                      , Homework.Week05.ExprT
                      , Homework.Week05.Parser
                      , Homework.Week06.Assignment
-                     , Homework.Week08.Assignment
+                     , Homework.Week07.Buffer
+                     , Homework.Week07.Editor
+                     , Homework.Week07.StringBuffer
                      , Homework.Week08.AParser
-                     , Homework.Week09.Assignment
+                     , Homework.Week08.Assignment
                      , Homework.Week09.AParser
+                     , Homework.Week09.Assignment
   build-depends:       base >= 4.7 && < 5
                      , MonadRandom
                      , QuickCheck
@@ -37,6 +40,7 @@ library
                      , text
                      , sqlite-simple
                      , transformers
+                     , mtl
   default-language:    Haskell2010
 
 test-suite cis194-test

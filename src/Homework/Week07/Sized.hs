@@ -1,5 +1,6 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving, FlexibleInstances #-}
-module Sized where
+
+module Homework.Week07.Sized where
 
 import Data.Monoid
 
