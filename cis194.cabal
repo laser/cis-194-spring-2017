@@ -27,6 +27,8 @@ library
                      , Homework.Week06.Assignment
                      , Homework.Week07.Buffer
                      , Homework.Week07.Editor
+                     , Homework.Week07.JoinList
+                     , Homework.Week07.Scrabble
                      , Homework.Week07.StringBuffer
                      , Homework.Week08.AParser
                      , Homework.Week08.Assignment
