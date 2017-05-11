@@ -50,7 +50,8 @@ indexJ i (Append _ l1 l2)
   where index1 = getSize . size . tag $ l1
 
 dropJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
-dropJ = undefined
+dropJ _ Empty = Empty
+dropJ i jl | i < 0 = jl
 
 takeJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
 takeJ = undefined
