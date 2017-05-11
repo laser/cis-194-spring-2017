@@ -6,6 +6,7 @@ module Homework.Week07Spec (
 import Test.Hspec
 import Test.QuickCheck
 
+import Homework.Week07.Sized
 import Homework.Week07.JoinList
 
 import Data.Monoid
@@ -31,6 +32,10 @@ spec = do
   describe "indexJ" $ do
     it "does what you tell it to do" $ do
       pending
+      let jl = (Append (Size 3) (Append (Size 2) (Single (Size 1) 's') (Single (Size 1) 'u')) (Single (Size 1) 'p'))
+      indexJ 0 jl `shouldBe` Just 's'
+      indexJ 1 jl `shouldBe` Just 'u'
+      indexJ 2 jl `shouldBe` Just 'p'
 
   describe "dropJ" $ do
     it "does what you tell it to do" $ do

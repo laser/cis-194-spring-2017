@@ -1,6 +1,16 @@
 {-# LANGUAGE FlexibleInstances #-}
 
-module Homework.Week07.JoinList where
+module Homework.Week07.JoinList (
+  tag,
+  indexJ,
+  (+++),
+  (!!?),
+  dropJ,
+  takeJ,
+  scoreLine,
+  Sized(..),
+  JoinList(..)
+) where
 
 import Homework.Week07.Buffer
 import Homework.Week07.Scrabble

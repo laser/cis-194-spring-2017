@@ -30,6 +30,7 @@ library
                      , Homework.Week07.JoinList
                      , Homework.Week07.Scrabble
                      , Homework.Week07.StringBuffer
+                     , Homework.Week07.Sized
                      , Homework.Week08.AParser
                      , Homework.Week08.Assignment
                      , Homework.Week09.AParser
