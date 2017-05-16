@@ -51,10 +51,32 @@ indexJ i (Append _ l1 l2)
 
 dropJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
 dropJ _ Empty = Empty
-dropJ i jl | i < 0 = jl
+dropJ 0 jl = jl
+dropJ n (Append m l r)
+  | n >= sizeM = Empty
+  | n == sizeL = r
+  | n > sizeL = dropJ n r
+  | n < sizeL = 
+    let newL = dropJ n l
+     in Append (mappend (tag newL) (tag r)) newL r
+  where sizeM = getSize . size $ m
+        sizeL = getSize . size . tag $ l
+        sizeR = getSize . size . tag $ r
 
 takeJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
-takeJ = undefined
+takeJ _ Empty = Empty
+takeJ 0 jl = Empty
+takeJ n jl@(Append m l r)
+  | n >= sizeM = jl
+  | n == sizeL = l
+  | n < sizeL = takeJ n l
+  | n > sizeL = 
+    let newR = takeJ (n - sizeL) r
+     in Append (mappend (tag l) (tag newR)) l newR
+  where sizeM = getSize . size $ m
+        sizeL = getSize . size . tag $ l
+        sizeR = getSize . size . tag $ r
+
 
 scoreLine :: String -> JoinList Score String
 scoreLine = undefined
