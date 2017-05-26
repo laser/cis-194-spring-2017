@@ -79,7 +79,7 @@ takeJ n jl@(Append m l r)
 
 
 scoreLine :: String -> JoinList Score String
-scoreLine = undefined
+scoreLine s = Single (scoreString s) s
 
 instance Buffer (JoinList (Score, Size) String) where
   fromString = undefined
