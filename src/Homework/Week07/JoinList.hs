@@ -10,7 +10,7 @@ module Homework.Week07.JoinList (
   takeJ,
   scoreLine,
   Sized(..),
-  JoinList(..)
+  JoinList(..),
 ) where
 
 import Homework.Week07.Buffer
@@ -29,8 +29,8 @@ tag (Append m _ _) = m
 (!!?) :: [a] -> Int -> Maybe a
 (!!?) [] _ = Nothing
 (!!?) _ i | i < 0 = Nothing
-(!!?) (x:xs) 0 = Just x
-(!!?) (x:xs) i = xs !!? (i-1)
+(!!?) (x:_) 0 = Just x
+(!!?) (_:xs) i = xs !!? (i-1)
 
 jlToList :: Monoid m => JoinList m a -> [a]
 jlToList Empty = []
@@ -61,11 +61,10 @@ dropJ n (Append m l r)
      in Append (mappend (tag newL) (tag r)) newL r
   where sizeM = getSize . size $ m
         sizeL = getSize . size . tag $ l
-        sizeR = getSize . size . tag $ r
 
 takeJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
 takeJ _ Empty = Empty
-takeJ 0 jl = Empty
+takeJ 0 _ = Empty
 takeJ n jl@(Append m l r)
   | n >= sizeM = jl
   | n == sizeL = l
@@ -75,8 +74,6 @@ takeJ n jl@(Append m l r)
      in Append (mappend (tag l) (tag newR)) l newR
   where sizeM = getSize . size $ m
         sizeL = getSize . size . tag $ l
-        sizeR = getSize . size . tag $ r
-
 
 scoreLine :: String -> JoinList Score String
 scoreLine s = Single (scoreString s) s
