@@ -52,6 +52,7 @@ indexJ i (Append _ l1 l2)
 
 dropJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
 dropJ _ Empty = Empty
+dropJ n _ | n < 0 = Empty
 dropJ 0 jl = jl
 dropJ n (Append m l r)
   | n >= sizeM = Empty
@@ -66,6 +67,7 @@ dropJ n (Append m l r)
 takeJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
 takeJ _ Empty = Empty
 takeJ 0 _ = Empty
+takeJ n _ | n < 0 = Empty
 takeJ n jl@(Append m l r)
   | n >= sizeM = jl
   | n == sizeL = l
@@ -84,7 +86,7 @@ instance Buffer (JoinList (Score, Size) String) where
   fromString = foldr (\ x -> (+++) (Single (scoreString x, 1) x)) Empty . lines
   line = indexJ
   numLines = getSize . snd . tag
-  replaceLine n string jl = takeJ (n - 1) jl +++ fromString string +++ dropJ n jl
+  replaceLine n string jl = takeJ n jl +++ fromString string +++ dropJ (n + 1) jl
   value = getScore . fst . tag
 
 main :: IO ()
