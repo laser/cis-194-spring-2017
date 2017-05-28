@@ -5,6 +5,7 @@ module Homework.Week07.JoinList (
   indexJ,
   (+++),
   (!!?),
+  jlToList,
   dropJ,
   takeJ,
   scoreLine,
