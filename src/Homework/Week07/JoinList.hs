@@ -16,6 +16,7 @@ module Homework.Week07.JoinList (
 import Homework.Week07.Buffer
 import Homework.Week07.Scrabble
 import Homework.Week07.Sized
+import Homework.Week07.Editor
 
 data JoinList m a = Empty
                   | Single m a
@@ -46,7 +47,7 @@ indexJ i _ | i < 0 = Nothing
 indexJ _ (Single _ a) = Just a
 indexJ i (Append _ l1 l2)
   | i < index1 = indexJ i l1 
-  | otherwise = indexJ i l2
+  | otherwise = indexJ (i - index1) l2
   where index1 = getSize . size . tag $ l1
 
 dropJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
@@ -79,9 +80,20 @@ scoreLine :: String -> JoinList Score String
 scoreLine s = Single (scoreString s) s
 
 instance Buffer (JoinList (Score, Size) String) where
-  fromString = undefined
-  line = undefined
-  numLines = undefined
-  replaceLine = undefined
-  toString = undefined
-  value = undefined
+  toString = unlines . jlToList
+  fromString = foldr (\ x -> (+++) (Single (scoreString x, 1) x)) Empty . lines
+  line = indexJ
+  numLines = getSize . snd . tag
+  replaceLine n string jl = takeJ (n - 1) jl +++ fromString string +++ dropJ n jl
+  value = getScore . fst . tag
+
+main :: IO ()
+main =
+  let defaultString = unlines
+         [ "This buffer is for notes you don't want to save, and for"
+         , "evaluation of steam valve coefficients."
+         , "To load a different file, type the character L followed"
+         , "by the name of the file."
+         ]
+      defaultBuffer = fromString defaultString :: (JoinList (Score, Size) String)
+  in runEditor editor defaultBuffer

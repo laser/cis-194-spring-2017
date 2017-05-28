@@ -39,3 +39,6 @@ score _ = Score 0
 scoreString :: String -> Score
 scoreString "" = Score 0
 scoreString (x:xs) = mappend (score x) (scoreString xs)
+
+getScore :: Score -> Int
+getScore (Score x) = x
