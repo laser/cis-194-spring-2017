@@ -40,7 +40,6 @@ indexJ i Empty = Nothing
 indexJ i (Single x j)
   | i == 0 = Just j
   | otherwise = Nothing
-  where xx = getSize (size x) 
 indexJ i (Append x l r)
   | i < xx = indexJ i l
   | i >= xx = indexJ (i - xx) r
@@ -70,7 +69,7 @@ takeJ i jl@(Append x l r)
   where xx = getSize (size (tag l))
 
 scoreLine :: String -> JoinList Score String
-scoreLine = undefined
+scoreLine s = (Single (scoreString s) s)
 
 instance Buffer (JoinList (Score, Size) String) where
   fromString = undefined
