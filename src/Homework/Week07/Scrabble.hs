@@ -4,8 +4,8 @@ newtype Score = Score Int
   deriving (Show, Eq)
 
 instance Monoid Score where
-  mempty = undefined
-  mappend = undefined
+  mempty = Score 0
+  mappend (Score x) (Score y) = Score (x + y)
 
 score :: Char -> Score
 score 'a' = Score 1
