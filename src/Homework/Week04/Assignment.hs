@@ -118,4 +118,6 @@ firstLetters = map head . filter (not . null)
 
 -- #17
 asList :: [String] -> String
-asList xs = "[" ++ intercalate "," xs ++ "]"
+asList xs =
+  let filtered = filter (\string -> length string > 0) xs
+  in "[" ++ intercalate "," filtered ++ "]"
