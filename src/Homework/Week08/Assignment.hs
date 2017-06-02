@@ -35,13 +35,13 @@ instance Applicative Parser where
 
 -- #3
 abParser :: Parser (Char, Char)
-abParser = undefined
+abParser = (\x y -> (x, y)) <$> char 'a' <*> char 'b'
 
 abParser_ :: Parser ()
-abParser_ = undefined
+abParser_ = (\_ _ -> ()) <$> char 'a' <*> char 'b'
 
 intPair :: Parser [Integer]
-intPair = undefined
+intPair = (\x _ y -> [x, y]) <$> posInt <*> char ' ' <*> posInt
 
 -- #4
 instance Alternative Parser where
