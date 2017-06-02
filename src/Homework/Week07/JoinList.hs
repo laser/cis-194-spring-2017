@@ -13,6 +13,7 @@ module Homework.Week07.JoinList (
   JoinList(..),
 ) where
 
+import Data.Monoid
 import Homework.Week07.Buffer
 import Homework.Week07.Scrabble
 import Homework.Week07.Sized
@@ -39,7 +40,7 @@ jlToList (Single _ a) = [a]
 jlToList (Append _ l1 l2) = jlToList l1 ++ jlToList l2
 
 (+++) :: Monoid m => JoinList m a -> JoinList m a -> JoinList m a
-(+++) list1 list2 = Append (mappend (tag list1) (tag list2)) list1 list2
+(+++) list1 list2 = Append (tag list1 <> tag list2) list1 list2
 
 indexJ :: (Sized b, Monoid b) => Int -> JoinList b a -> Maybe a
 indexJ _ Empty = Nothing
@@ -60,7 +61,7 @@ dropJ n (Append m l r)
   | n > sizeL = dropJ n r
   | n < sizeL = 
     let newL = dropJ n l
-     in Append (mappend (tag newL) (tag r)) newL r
+     in Append (tag newL <> tag r) newL r
   where sizeM = getSize . size $ m
         sizeL = getSize . size . tag $ l
 
@@ -74,7 +75,7 @@ takeJ n jl@(Append m l r)
   | n < sizeL = takeJ n l
   | n > sizeL = 
     let newR = takeJ (n - sizeL) r
-     in Append (mappend (tag l) (tag newR)) l newR
+     in Append (tag l <> tag newR) l newR
   where sizeM = getSize . size $ m
         sizeL = getSize . size . tag $ l
 
