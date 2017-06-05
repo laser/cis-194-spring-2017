@@ -42,6 +42,7 @@ spec = do
       pending
       runParser ident "foobar baz" `shouldBe` Just ("foobar", " baz")
       runParser ident "foo33fA" `shouldBe` Just ("foo33fA", "")
+      runParser ident "f" `shouldBe` Just ("f", "")
       runParser ident "2bad" `shouldBe` Nothing
       runParser ident "" `shouldBe` Nothing
 
