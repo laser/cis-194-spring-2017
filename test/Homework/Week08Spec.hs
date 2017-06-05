@@ -56,12 +56,10 @@ spec = do
   describe "Alternative Parser" $ do
     describe "empty" $ do
       it "is a parser that always fails" $ do
-        pending
         runParser (empty :: Parser ()) "abc" `shouldBe` Nothing
 
     describe "<|>" $ do
       it "uses the first parser if successful" $ do
-        pending
         let p1 = char '*' <|> char '$'
         runParser p1 "*abc" `shouldBe` Just ('*', "abc")
 
@@ -69,7 +67,6 @@ spec = do
         runParser p2 "1234" `shouldBe` Just ('1', "234")
 
       it "user the second parser if the first one fails" $ do
-        pending
         let p1 = char '*' <|> char '$'
         runParser p1 "$abc" `shouldBe` Just ('$', "abc")
 
@@ -82,7 +79,6 @@ spec = do
 
   describe "intOrUppercase" $ do
     it "consumes an integer or an uppercase character" $ do
-      pending
       runParser intOrUppercase "342abcd" `shouldBe` Just ((), "abcd")
       runParser intOrUppercase "XYZ" `shouldBe` Just ((), "YZ")
       runParser intOrUppercase "foo" `shouldBe` Nothing
