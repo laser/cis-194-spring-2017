@@ -44,15 +44,12 @@ spec = do
 
   describe "parseSExpr" $ do
     it "parses numeric atoms" $ do
-      pending
       runParser parseSExpr "5" `shouldBe` Just (A (N 5), "")
 
     it "parses identifiers" $ do
-      pending
       runParser parseSExpr "foo3" `shouldBe` Just (A (I "foo3"), "")
 
     it "parses lists of s-expressions" $ do
-      pending
       runParser parseSExpr "(bar (foo) 3 5 874)"
         `shouldBe` Just (Comb [ A (I "bar"), Comb [A (I "foo")]
                               , A (N 3), A (N 5), A (N 874)

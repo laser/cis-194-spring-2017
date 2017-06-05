@@ -58,4 +58,4 @@ instance Alternative Parser where
 
 -- #5
 intOrUppercase :: Parser ()
-intOrUppercase = void (void (satisfy isUpper) <|> void posInt)
+intOrUppercase = void (satisfy isUpper) <|> void posInt

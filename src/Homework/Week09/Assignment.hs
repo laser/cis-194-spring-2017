@@ -40,4 +40,12 @@ data SExpr = A Atom
   deriving (Eq, Show)
 
 parseSExpr :: Parser SExpr
-parseSExpr = undefined
+parseSExpr = 
+  trim (char '(' *> (Comb <$> oneOrMore parseSExpr) <* char ')')
+  <|> trim (A <$> parseAtom)
+
+parseAtom :: Parser Atom
+parseAtom = trim ((I <$> ident) <|> (N <$> posInt))
+
+trim :: Parser a -> Parser a
+trim p = spaces *> p <* spaces
