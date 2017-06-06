@@ -17,7 +17,7 @@ Week | Lecture                                                | Assignment Due  
 9    | [Applicative functors (part 2)][10]                    | [parsers, part two][29] |         |                                   |
 10   | [Property-based Testing w/QuickCheck][12]              | [testing][31]           |         |                                   |
 11   | [Monads][11]                                           | [risk][30]              |         |                                   |
-12   | [Lenses][13]                                           | lenses                  |         |                                   |
+12   | [Lenses][13]                                           | [lenses][32]            |         |                                   |
 
   [1]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/lectures/Week01L-intro.pdf
   [2]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/lectures/Week02L-ADTs.pdf
@@ -31,7 +31,7 @@ Week | Lecture                                                | Assignment Due  
   [10]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/lectures/Week10L-applicative-cont.pdf
   [11]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/lectures/Week11L-monads.pdf
   [12]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/lectures/QuickCheckL.pdf
-  [13]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/lectures/LensesL.pdf
+  [13]: https://artyom.me/lens-over-tea-1
 
   [21]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week01A-intro.pdf
   [22]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week02A-ADTs.pdf
@@ -44,6 +44,7 @@ Week | Lecture                                                | Assignment Due  
   [29]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week10A-applicative-cont.pdf
   [30]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week11A-monads.pdf
   [31]: https://github.com/laser/cis-194-spring-2017/blob/master/pdfs/assignments/Week12A-quickcheck.pdf
+  [31]: https://artyom.me/lens-over-tea-1
 
 ## Getting Started
 

@@ -35,11 +35,16 @@ library
                      , Homework.Week08.Assignment
                      , Homework.Week09.AParser
                      , Homework.Week09.Assignment
+                     , Homework.Week10.Assignment
+                     , Homework.Week10.Support
+                     , Homework.Week11.Assignment
+                     , Homework.Week12.Assignment
   build-depends:       base >= 4.7 && < 5
                      , MonadRandom
                      , QuickCheck
                      , aeson
                      , bytestring
+                     , random
                      , text
                      , sqlite-simple
                      , transformers
