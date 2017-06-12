@@ -37,10 +37,10 @@ instance Applicative Parser where
 
 -- #3
 abParser :: Parser (Char, Char)
-abParser = (\x y -> (x, y)) <$> char 'a' <*> char 'b'
+abParser = (,) <$> char 'a' <*> char 'b'
 
 abParser_ :: Parser ()
-abParser_ = (\_ _ -> ()) <$> char 'a' <*> char 'b'
+abParser_ = void abParser
 
 intPair :: Parser [Integer]
 intPair = (\x y -> [x, y]) <$> posInt <* char ' ' <*> posInt
