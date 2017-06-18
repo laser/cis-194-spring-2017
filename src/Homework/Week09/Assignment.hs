@@ -1,5 +1,4 @@
 module Homework.Week09.Assignment (
-  upper,
   zeroOrMore,
   oneOrMore,
   spaces,
@@ -16,32 +15,6 @@ import Data.Char (isUpper, isSpace, isAlpha, isAlphaNum)
 import Homework.Week09.AParser
 
 -- #1
--- isUpper :: Char -> Bool
-upper :: Parser Char
-upper = satisfy isUpper
-
--- Hint: To parse one or more occurences of p, run p
---       once and then parse zero or more occurences
---       of p. To parse zero or more occurences of p,
---       try parsing one or more; if that fails,
---       return the empty list.
-
---
--- zeroOrMore upper :: Parser [Char]
--- runParser (zeroOrMore upper) "ABCd" :: Maybe ([Char], String)
--- runParser :: String -> Maybe (a, String)
--- 
--- <$> :: (a -> b) -> f a -> f b
--- pure :: a -> f a
--- <*> :: f (a -> b) -> f a -> f b
--- <|> :: f a -> f a -> f a
--- 
--- (:)                                  :: a -> [a] -> [a]
--- ((<$>) (:))                          :: f a -> f ([a] -> [a])
--- ((:) <$> upper)                      :: Parser ([Char] -> [Char])
--- ((<*>) ((:) <$> upper))              :: Parser [Char] -> Parser [Char]
--- ((:) <$> upper <*> zeroOrMore upper) :: Parset [Char] -- Aha!
-
 zeroOrMore :: Parser a -> Parser [a]
 zeroOrMore p = (oneOrMore p) <|> (pure [])
 
