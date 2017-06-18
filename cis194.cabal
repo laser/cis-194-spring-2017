@@ -37,6 +37,7 @@ library
                      , Homework.Week09.Assignment
                      , Homework.Week10.Assignment
                      , Homework.Week10.Support
+                     , Homework.Week10.Reading
                      , Homework.Week11.Assignment
                      , Homework.Week12.Assignment
   build-depends:       base >= 4.7 && < 5
