@@ -9,10 +9,11 @@ import Homework.Week10.Support (Tree(..), labelTree)
 -- Exercise 2
 
 size :: Tree a -> Int
-size = undefined
+size = length . toList
 
 toList :: Tree a -> [a]
-toList = undefined
+toList (Leaf x) = [x]
+toList (Node tree1 tree2) = toList tree1 ++ toList tree2
 
 -- Exercise 3
 
