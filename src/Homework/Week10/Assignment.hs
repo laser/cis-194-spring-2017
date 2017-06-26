@@ -2,9 +2,21 @@ module Homework.Week10.Assignment where
 
 import Homework.Week10.Support (Tree(..), labelTree)
 
+import Test.QuickCheck
+import Control.Monad
+
 -- Exercise 1
 
--- instance Arbitrary a => Arbitrary (Tree a) where
+treeOf :: Arbitrary a => Int -> Gen (Tree a)
+treeOf n | n <= 1 = Leaf <$> arbitrary
+treeOf n = 
+  let nodesOnLeft = n `div` 2
+  in  liftM2 Node (treeOf nodesOnLeft) (treeOf (n - nodesOnLeft))
+
+instance Arbitrary a => Arbitrary (Tree a) where
+  arbitrary = sized $ \size -> do
+    len <- choose (0, size)
+    treeOf len
 
 -- Exercise 2
 
@@ -29,7 +41,7 @@ prop_sizeLabelTree tree = size tree == size (labelTree tree)
 -- For every tree t, toList (labelTree t) is the expected list.
 -- Hint: [0..n] denotes the list of numbers from 0 to n, inclusively.
 prop_labelTree :: Tree Integer -> Bool
-prop_labelTree tree = (toList . labelTree $ tree) == [0..(toInteger . size $ tree)]
+prop_labelTree tree = (toList . labelTree $ tree) == [0..(toInteger . size $ tree) - 1]
 
 -- Applying labelTree to a list twice does yield the same list as applying it once.
 prop_labelTreeIdempotent :: Tree Integer -> Bool
