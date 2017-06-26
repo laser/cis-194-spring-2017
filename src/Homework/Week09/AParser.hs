@@ -1,8 +1,8 @@
 module Homework.Week09.AParser (
-  Parser, 
-  runParser, 
-  satisfy, 
-  char, 
+  Parser,
+  runParser,
+  satisfy,
+  char,
   posInt
 ) where
 
