@@ -35,8 +35,8 @@ battle :: Battlefield -> Rand StdGen Battlefield
 battle field@(Battlefield 0 _) = return field
 battle field@(Battlefield _ 0) = return field
 battle (Battlefield attackerCount defenderCount) = do
-  attackerRolls <- getRolls (attackerCount - 1)
-  defenderRolls <- getRolls defenderCount
+  attackerRolls <- getRolls 3 (attackerCount - 1)
+  defenderRolls <- getRolls 2 defenderCount
   let (attackerLosses, defenderLosses) = getLosses attackerRolls defenderRolls
   return (Battlefield (attackerCount - attackerLosses) (defenderCount - defenderLosses))
 
@@ -54,8 +54,9 @@ subtractRolls (DV n1, DV n2) = n1 - n2
 count :: (a -> Bool) -> [a] -> Int
 count f = length . filter f
 
-getRolls :: Int -> Rand StdGen [DieValue]
-getRolls n = sortRolls <$> replicateM n getRandom
+getRolls :: Int -> Int -> Rand StdGen [DieValue]
+getRolls maxRolls army =
+  sortRolls <$> replicateM (min maxRolls army) getRandom
 
 sortRolls :: [DieValue] -> [DieValue]
 sortRolls = sortBy . flip $ compare
