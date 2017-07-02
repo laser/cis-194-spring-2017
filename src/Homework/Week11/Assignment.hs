@@ -3,6 +3,8 @@
 module Homework.Week11.Assignment where
 
 import Control.Monad.Random
+import Control.Monad
+import Data.List
 
 ------------------------------------------------------------
 -- Die values
@@ -26,11 +28,39 @@ die = getRandom
 type Army = Int
 
 data Battlefield = Battlefield { attackers :: Army, defenders :: Army }
-  deriving (Show)
+  deriving Show
 
 -- #2 (there is no assignment #1, really)
 battle :: Battlefield -> Rand StdGen Battlefield
-battle = undefined
+battle field@(Battlefield 0 _) = return field
+battle field@(Battlefield _ 0) = return field
+battle field = do
+  let attackerCount = attackers field
+  let defenderCount = defenders field
+  attackerRolls <- getRolls (attackerCount - 1)
+  defenderRolls <- getRolls defenderCount
+  let (attackerLosses, defenderLosses) = getLosses attackerRolls defenderRolls
+  return (Battlefield (attackerCount - attackerLosses) (defenderCount - defenderLosses))
+
+getLosses :: [DieValue] -> [DieValue] -> (Int, Int)
+getLosses attackerRolls defenderRolls =
+  let pairs = zip attackerRolls defenderRolls
+      results = subtractRolls <$> pairs
+      defenderLosses = count (0 <) results
+      attackerLosses = count (0 >=) results
+  in (attackerLosses, defenderLosses)
+
+subtractRolls :: (DieValue, DieValue) -> Int
+subtractRolls (DV n1, DV n2) = n1 - n2
+
+count :: Eq a => (a -> Bool) -> [a] -> Int
+count f = length . filter f
+
+getRolls :: Int -> Rand StdGen [DieValue]
+getRolls n = sortRolls <$> replicateM n getRandom
+
+sortRolls :: [DieValue] -> [DieValue]
+sortRolls = sortBy . flip $ compare
 
 -- #3
 invade :: Battlefield -> Rand StdGen Battlefield
