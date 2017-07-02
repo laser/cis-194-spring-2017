@@ -34,9 +34,7 @@ data Battlefield = Battlefield { attackers :: Army, defenders :: Army }
 battle :: Battlefield -> Rand StdGen Battlefield
 battle field@(Battlefield 0 _) = return field
 battle field@(Battlefield _ 0) = return field
-battle field = do
-  let attackerCount = attackers field
-  let defenderCount = defenders field
+battle (Battlefield attackerCount defenderCount) = do
   attackerRolls <- getRolls (attackerCount - 1)
   defenderRolls <- getRolls defenderCount
   let (attackerLosses, defenderLosses) = getLosses attackerRolls defenderRolls
@@ -64,7 +62,11 @@ sortRolls = sortBy . flip $ compare
 
 -- #3
 invade :: Battlefield -> Rand StdGen Battlefield
-invade = undefined
+invade field@(Battlefield n _) | n <= 1 = return field
+invade field@(Battlefield _ 0) = return field
+invade field = do
+  nextField <- battle field
+  invade nextField
 
 -- #4
 successProb :: Battlefield -> Rand StdGen Double
