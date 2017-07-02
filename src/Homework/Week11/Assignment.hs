@@ -26,6 +26,7 @@ die = getRandom
 type Army = Int
 
 data Battlefield = Battlefield { attackers :: Army, defenders :: Army }
+  deriving (Show)
 
 -- #2 (there is no assignment #1, really)
 battle :: Battlefield -> Rand StdGen Battlefield
