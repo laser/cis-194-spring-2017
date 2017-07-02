@@ -51,7 +51,7 @@ getLosses attackerRolls defenderRolls =
 subtractRolls :: (DieValue, DieValue) -> Int
 subtractRolls (DV n1, DV n2) = n1 - n2
 
-count :: Eq a => (a -> Bool) -> [a] -> Int
+count :: (a -> Bool) -> [a] -> Int
 count f = length . filter f
 
 getRolls :: Int -> Rand StdGen [DieValue]
@@ -70,7 +70,14 @@ invade field = do
 
 -- #4
 successProb :: Battlefield -> Rand StdGen Double
-successProb = undefined
+successProb field = do
+  results <- replicateM 1000 (invade field)
+  let attackerWins = count isDefenderDead results
+  return (fromIntegral attackerWins / 1000.0)
+
+isDefenderDead :: Battlefield -> Bool
+isDefenderDead (Battlefield _ 0) = True
+isDefenderDead _ = False
 
 -- #5
 exactSuccessProb :: Battlefield -> Double
