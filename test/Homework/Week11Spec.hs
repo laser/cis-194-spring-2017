@@ -49,9 +49,13 @@ spec :: Spec
 spec = do
   describe "battle" $ do
     -- prop "subtracts two units from the battle" prop_subtractsTwoFromBattle
+    it "is pending" $ do
+      pending
 
   describe "invade" $ do
     -- prop "produces a winner" prop_findsWinner
+    it "is pending too" $ do
+      pending
 
   describe "successProb" $ do
     it "finds a low probability of success" $ do
