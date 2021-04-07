@@ -2,9 +2,9 @@ module Homework.Week03.Assignment (
   skips,
   localMaxima,
   histogram,
-  histoHelper,
-  incSecondHead
 ) where
+
+import Data.List
 
 -- #1 --
 skips :: [a] -> [[a]]
@@ -21,20 +21,16 @@ localMaxima :: [Integer] -> [Integer]
 localMaxima (x:y:z:rest) = if (x < y && y > z) then (y:localMaxima (z:rest)) else localMaxima (y:z:rest)
 localMaxima list         = []
 
-
 -- #3
 histogram :: [Integer] -> String
-histogram = undefined
--- histogram list = foldr ({-- function --}) (replicate 10 0) list
-
--- 0 |
--- 1 | ***
--- 2 | *
+histogram list = let incList = incidences list in
+  let m = maximum incList in
+  unlines $ transpose $ zipWith (\ind inc -> (replicate (m - inc) ' ') ++ (replicate inc '*') ++ "=" ++ show ind) [0..] incList
 
 -- Takes a list of Integers and returns a list of Integers with length 10 of
 -- the form [num of 0's, ..., num of 9's] in the initial list
-incidences :: [Integer] -> [Integer]
-incidences list = foldr incHelper (replicate 10 0) list
+incidences :: [Integer] -> [Int]
+incidences list = map fromInteger (foldr incHelper (replicate 10 0) list)
 
 incHelper :: Integer -> [Integer] -> [Integer]
 incHelper i occs = joinPair $ incSecondHead (splitAt (fromInteger i) occs)

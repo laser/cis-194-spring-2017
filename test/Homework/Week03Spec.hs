@@ -30,19 +30,10 @@ spec = do
       localMaxima [2, 3, 4, 1, 5] `shouldBe` [4]
       localMaxima [1, 2, 3, 4, 5] `shouldBe` []
 
-  describe "incSecondHead" $ do
-    it "increments the head of the second list" $ do
-      incSecondHead ([1,2],[3,5]) `shouldBe` ([1,2],[4,5])
-
-  describe "histoHelper" $ do
-    it "increments the nth entry of the list" $ do
-      histoHelper 2 [10,11,12,13,14,15,16,17] `shouldBe` [10,11,13,13,14,15,16,17]
-
   describe "histogram" $ do
     it "takes as input a list of Integers between 0 and 9 (inclusive) and \
         \ outputs a vertical histogram showing how many of each number were in \
         \ the input list" $ do
-      pending
 
       let hs1 = "\
                  \ *        \n\
