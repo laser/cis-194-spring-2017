@@ -132,16 +132,15 @@ insertBST o x (Node left y right) =
 
 -- #14
 allCaps :: [String] -> Bool
-allCaps list = all ((maybe False isUpper) . safeHead) list
+allCaps = all ((maybe False isUpper) . safeHead)
 
 -- #15
 dropTrailingWhitespace :: String -> String
--- dropTrailingWhitespace str = undefined
-dropTrailingWhitespace str = reverse $ dropWhile isSpace (reverse str)
+dropTrailingWhitespace = reverse . (dropWhile isSpace) . reverse
 
 -- #16
 firstLetters :: [String] -> [Char]
-firstLetters list = map (maybe ' ' id) (filter (maybe False (const True)) (map safeHead list))
+firstLetters = (map ((maybe 'x' id) . safeHead)) . (filter (not . null))
 
 -- #17
 asList :: [String] -> String
