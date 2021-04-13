@@ -13,14 +13,18 @@ module Homework.Week06.Assignment (
 
 -- #1a
 fib :: Integer -> Integer
-fib = undefined
+fib n
+  | n <= 0    = 0
+  | n == 1    = 1
+  | otherwise = (fib (n-1)) + (fib (n-2))
 
 fibs1 :: [Integer]
-fibs1 = undefined
+fibs1 = map fib [0..]
 
--- #2
+-- #2 yes
 fibs2 :: [Integer]
-fibs2 = undefined
+fibs2 = map fst (scanl (\(fNMinusTwo, fNMinusOne) _ -> (fNMinusOne, fNMinusTwo + fNMinusOne)) (0,1) (repeat 0))
+
 
 -- #3
 data Stream a = Stream a -- replace this with your own definition; this one is wrong
