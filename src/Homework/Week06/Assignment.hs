@@ -27,27 +27,27 @@ fibs2 = map fst (scanl (\(fNMinusTwo, fNMinusOne) _ -> (fNMinusOne, fNMinusTwo +
 
 
 -- #3
-data Stream a = Stream a -- replace this with your own definition; this one is wrong
+data Stream a = Cons a (Stream a)
 
 streamToList :: Stream a -> [a]
-streamToList = undefined
+streamToList (Cons x xs) = (x:streamToList xs)
 
 -- instance Show a => Show (Stream a) where
 --   show = ???
 
 -- #4
 streamRepeat :: a -> Stream a
-streamRepeat = undefined
+streamRepeat x = (Cons x (streamRepeat x))
 
 streamMap :: (a -> b) -> Stream a -> Stream b
-streamMap = undefined
+streamMap f (Cons x xs) = (Cons (f x) (streamMap f xs))
 
 streamFromSeed :: (a -> a) -> a -> Stream a
-streamFromSeed = undefined
+streamFromSeed f x = (Cons x (streamFromSeed f (f x)))
 
 -- #5
 nats :: Stream Integer
-nats = undefined
+nats = streamFromSeed (+1) 0
 
 ruler :: Stream Integer
 ruler = undefined
