@@ -22,19 +22,32 @@ data JoinList m a = Empty
                   | Append m (JoinList m a) (JoinList m a) deriving (Eq, Show)
 
 tag :: Monoid m => JoinList m a -> m
-tag = undefined
+tag  Empty         = mempty
+tag (Single x y)   = x
+tag (Append x _ _) = x
 
 (!!?) :: [a] -> Int -> Maybe a
-(!!?) = undefined
+[]     !!? _         = Nothing
+_      !!? i | i < 0 = Nothing
+(x:xs) !!? 0         = Just x
+(x:xs) !!? i         = xs !!? (i-1)
 
 jlToList :: Monoid m => JoinList m a -> [a]
-jlToList = undefined
+jlToList Empty            = []
+jlToList (Single _ a)     = [a]
+jlToList (Append _ l1 l2) = jlToList l1 ++ jlToList l2
 
 (+++) :: Monoid m => JoinList m a -> JoinList m a -> JoinList m a
-(+++) = undefined
+(+++) x y = Append (mappend (tag x) (tag y)) x y
 
 indexJ :: (Sized b, Monoid b) => Int -> JoinList b a -> Maybe a
-indexJ = undefined
+indexJ _ Empty                = Nothing
+indexJ i _            | i < 0 = Nothing
+indexJ i (Single m a) | i > 0 = Nothing
+indexJ 0 (Single m a)         = Just a
+indexJ i (Append _ jla jlb)   = if   i < getSize (tag jla)
+                                then indexJ  i jla
+                                else indexJ (i - getSize (tag jla)) jlb
 
 dropJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
 dropJ = undefined
