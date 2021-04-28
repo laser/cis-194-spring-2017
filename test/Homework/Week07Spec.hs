@@ -41,25 +41,53 @@ spec = do
 
     describe "dropJ" $ do
       it "returns the list when dropping 0" $ do
-        pending
         jlToList (dropJ 0 jl) `shouldBe` jlToList jl
       it "drops the first element from a JoinList" $ do
-        pending
         jlToList (dropJ 1 jl) `shouldBe` ['u', 'p']
       it "drops the first n elements from a JoinList" $ do
-        pending
         jlToList (dropJ 2 jl) `shouldBe` ['p']
 
     describe "takeJ" $ do
       it "returns the list when taking more than the list" $ do
-        pending
         jlToList (takeJ 4 jl) `shouldBe` jlToList jl
       it "takes the first element from a JoinList" $ do
-        pending
         jlToList (takeJ 1 jl) `shouldBe` ['s']
       it "takes the first n elements from a JoinList" $ do
-        pending
         jlToList (takeJ 2 jl) `shouldBe` ['s', 'u']
+
+  describe "score" $ do
+    it "scores letters correctly" $ do
+      score 'a' `shouldBe` Score 1
+      score 'b' `shouldBe` Score 3
+      score 'c' `shouldBe` Score 3
+      score 'd' `shouldBe` Score 2
+      score 'e' `shouldBe` Score 1
+      score 'f' `shouldBe` Score 4
+      score 'g' `shouldBe` Score 2
+      score 'h' `shouldBe` Score 4
+      score 'i' `shouldBe` Score 1
+      score 'j' `shouldBe` Score 8
+      score 'k' `shouldBe` Score 5
+      score 'l' `shouldBe` Score 1
+      score 'm' `shouldBe` Score 3
+      score 'n' `shouldBe` Score 1
+      score 'o' `shouldBe` Score 1
+      score 'p' `shouldBe` Score 3
+      score 'q' `shouldBe` Score 10
+      score 'r' `shouldBe` Score 1
+      score 's' `shouldBe` Score 1
+      score 't' `shouldBe` Score 1
+      score 'u' `shouldBe` Score 1
+      score 'v' `shouldBe` Score 4
+      score 'w' `shouldBe` Score 4
+      score 'x' `shouldBe` Score 8
+      score 'y' `shouldBe` Score 4
+      score 'z' `shouldBe` Score 10
+
+  describe "scoreString" $ do
+    it "scores a single word" $ do
+      scoreString "yay" `shouldBe` Score 9
+      scoreString "haskell" `shouldBe` Score 14
 
   describe "scoreLine" $ do
     it "scores a single word" $ do
