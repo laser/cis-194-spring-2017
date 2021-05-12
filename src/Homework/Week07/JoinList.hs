@@ -52,7 +52,7 @@ indexJ i (Single m a) | i > 0 = Nothing
 indexJ 0 (Single m a)         = Just a
 indexJ i (Append _ jla jlb)
   | i < intFromJ jla = indexJ i jla
-  | otherwise                      = indexJ (i - intFromJ jla) jlb
+  | otherwise        = indexJ (i - intFromJ jla) jlb
 
 dropJ :: (Sized b, Monoid b) => Int -> JoinList b a -> JoinList b a
 dropJ i jl
@@ -67,12 +67,22 @@ takeJ i jl
 takeJ i (Append _ jla jlb) = takeJ i jla +++ takeJ (i - intFromJ jla) jlb
 
 scoreLine :: String -> JoinList Score String
-scoreLine = undefined
+scoreLine str = Single (scoreString str) str
+
+fromStringLines :: [String] -> JoinList (Score, Size) String
+fromStringLines [] = Empty
+fromStringLines [a] = Single (scoreString a, Size 1) a
+fromStringLines (a:as) = fromStringLines [a] +++ fromStringLines as
+
+extractScore :: Score -> Int
+extractScore (Score i) = i
 
 instance Buffer (JoinList (Score, Size) String) where
-  fromString = undefined
-  line = undefined
-  numLines = undefined
-  replaceLine = undefined
-  toString = undefined
-  value = undefined
+  fromString str = fromStringLines (lines str)
+  line = indexJ
+  numLines = getSize . snd . tag
+  replaceLine i str jl = takeJ i jl +++ fromString str +++ dropJ (i + 1) jl
+  toString Empty = ""
+  toString (Single _ str) = str
+  toString (Append _ jla jlb) = toString jla ++ "\n" ++ toString jlb
+  value jl = (extractScore . fst . tag) jl
